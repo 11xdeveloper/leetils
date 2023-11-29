@@ -1,1 +1,1 @@
-export { findNumberPairs } from './Easy';
+export { findNumberPairs, longestCommonPrefix } from './Easy';
