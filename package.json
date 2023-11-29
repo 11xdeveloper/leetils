@@ -29,7 +29,7 @@
         "test": "jest",
         "format": "prettier --write .",
         "lint": "eslint --fix .",
-        "check": "npm run format && npm run lint && npm run test"
+        "check": "pnpm run format && pnpm run lint && pnpm run test"
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.1",
