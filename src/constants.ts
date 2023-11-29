@@ -1,1 +1,5 @@
-export {};
+export const BracketPairMapping = new Map([
+    ['(', ')'],
+    ['{', '}'],
+    ['[', ']']
+]);
