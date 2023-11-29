@@ -26,7 +26,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsup src --format cjs,esm --dts",
-        "release": "pnpm run build && changeset publish",
+        "release": "changeset publish",
         "test": "jest",
         "format": "prettier --write .",
         "lint": "eslint --fix .",

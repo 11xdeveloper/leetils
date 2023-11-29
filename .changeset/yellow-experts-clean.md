@@ -1,0 +1,5 @@
+---
+'leetils': minor
+---
+
+Added longestCommonPrefix
