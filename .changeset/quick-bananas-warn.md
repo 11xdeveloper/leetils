@@ -2,4 +2,4 @@
 'leetils': minor
 ---
 
-Added findNumberPairs (Modification of Two Sum #1)
+Added findNumberPairs (Modification of Two Sum)
