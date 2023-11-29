@@ -1,1 +1,1 @@
-export {};
+export { findNumberPairs } from './Easy';
