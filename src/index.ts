@@ -4,5 +4,6 @@ export {
     findNumberPairs,
     longestCommonPrefix,
     isPalindrome,
-    validBrackets
+    validBrackets,
+    romanToInt
 } from './Easy';

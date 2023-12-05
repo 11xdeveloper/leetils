@@ -6,5 +6,5 @@ src
 .gitignore
 .prettierrc.json
 jest.config.js
-pnpm-lock.yaml
+bun.lockb
 tsconfig.json
