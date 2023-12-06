@@ -1,3 +1,4 @@
+import { test, expect } from 'bun:test';
 import isPalindrome from '.';
 
 test('isPalindrome: Tells if a provided number is a palindrome.', () => {

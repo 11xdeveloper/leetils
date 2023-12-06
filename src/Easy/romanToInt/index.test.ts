@@ -1,3 +1,4 @@
+import { test, expect } from 'bun:test';
 import romanToInt from '.';
 
 test('RomanToInt: Converts the provided string of roman numericals into an integer.', () => {

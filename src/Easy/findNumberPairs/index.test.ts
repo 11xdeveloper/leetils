@@ -1,3 +1,4 @@
+import { test, expect } from 'bun:test';
 import findNumberPairs from '.';
 
 test('FindNumberPairs: Finds all pairs of numbers in a given array that sum to a given target. (Modified version of Two Sum)', () => {
