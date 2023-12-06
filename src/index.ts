@@ -7,3 +7,5 @@ export {
     validBrackets,
     romanToInt
 } from './Easy';
+
+export { atoi } from './Medium';
