@@ -1,4 +1,5 @@
 export { BracketPairMapping as Brackets } from './constants';
+export { ListNode } from './utils';
 
 export {
     findNumberPairs,
