@@ -22,7 +22,7 @@ test('ListNode.from: Converts an array of numbers into ListNodes', () => {
     );
 });
 
-test('ListNode.push: Adds a node at the end of the ListNode', () => {
+test('ListNode.push: Adds nodes at the end of the ListNode', () => {
     expect(ListNode.from([1, 2, 4]).push(5)).toStrictEqual(
         ListNode.from([1, 2, 4, 5])
     );
@@ -32,4 +32,12 @@ test('ListNode.push: Adds a node at the end of the ListNode', () => {
     expect(ListNode.from([1, 3, 4]).push(8, 2)).toStrictEqual(
         ListNode.from([1, 3, 4, 8, 2])
     );
+});
+
+test('ListNode.toArray: Converts the linked node list to a number array.', () => {
+    expect(ListNode.from([1, 2, 4]).toArray()).toStrictEqual([1, 2, 4]);
+    expect(ListNode.from([1, 3, 4]).toArray()).toStrictEqual([1, 3, 4]);
+    expect(ListNode.from([1, 1, 2, 3, 4, 4]).toArray()).toStrictEqual([
+        1, 1, 2, 3, 4, 4
+    ]);
 });

@@ -25,7 +25,12 @@ class ListNode {
     static from(list: number[]) {
         if (list.length === 0) throw new Error('Recieved empty array');
 
-        return new ListNode(list[0]).push(...list.slice(1));
+        return new ListNode(list[0]!).push(...list.slice(1));
+    }
+
+    toArray(): number[] {
+        if (!this.next) return [this.val];
+        return [this.val, ...this.next.toArray()];
     }
 }
 
