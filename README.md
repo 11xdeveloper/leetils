@@ -46,5 +46,3 @@ console.log(findNumberPairs([2, 7, 11, 15], 9)); // [[2, 7]]
 ## Contribute
 
 TODO
-
----
