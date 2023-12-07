@@ -7,21 +7,25 @@ class ListNode {
         this.next = next ? next : null;
     }
 
-    push(val: number) {
-        this.next ? this.next.push(val) : (this.next = new ListNode(val));
+    getLastNode(): ListNode {
+        return this.next ? this.next.getLastNode() : this;
+    }
+
+    push(...nums: number[]) {
+        let lastNode = this.getLastNode();
+
+        for (const num of nums) {
+            lastNode.next = new ListNode(num);
+            lastNode = lastNode.next;
+        }
+
         return this;
     }
 
     static from(list: number[]) {
-        if (list.length < 1) throw new Error('Recieved empty array');
+        if (list.length === 0) throw new Error('Recieved empty array');
 
-        const listNode = new ListNode(list[0]);
-
-        for (let i = 1; i < list.length; i++) {
-            listNode.push(list[i]);
-        }
-
-        return listNode;
+        return new ListNode(list[0]).push(...list.slice(1));
     }
 }
 
