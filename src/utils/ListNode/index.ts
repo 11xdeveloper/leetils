@@ -32,6 +32,14 @@ class ListNode {
         if (!this.next) return [this.val];
         return [this.val, ...this.next.toArray()];
     }
+
+    sort(compareFn?: (a: number, b: number) => number) {
+        return ((x: ListNode) => {
+            this.val = x.val;
+            this.next = x.next;
+            return x;
+        })(ListNode.from(this.toArray().sort(compareFn)));
+    }
 }
 
 export default ListNode;

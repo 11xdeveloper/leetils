@@ -12,7 +12,7 @@ export default (nums: number[], target: number) => {
         }
 
         for (let i = start; i < nums.length; i++) {
-            const num = nums[i];
+            const num = nums[i]!;
 
             if (currentSum + num > target) continue;
 
