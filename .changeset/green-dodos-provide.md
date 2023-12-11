@@ -3,6 +3,7 @@
 ---
 
 -   Added
+    -   twoSum
     -   longestCommonPrefix
     -   isPalindrome
     -   validBrackets
