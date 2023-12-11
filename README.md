@@ -9,9 +9,13 @@
 <div align="center">
   <strong>All (not really) of leetcode's problem solutions in one package</strong>
   <br />
-  ![downloads](https://img.shields.io/npm/dw/leetils)
-  ![bundle size](https://img.shields.io/bundlephobia/minzip/leetils)
-  ![module fornats: cjs, esm](https://img.shields.io/badge/module%20formats-cjs,%20esm-green)
+  <a href="https://www.npmjs.com/package/leetils">
+    <img src="https://img.shields.io/npm/dw/leetils" alt="Downloads: /week">
+  </a>
+  <a href="https://bundlephobia.com/package/leetils">
+    <img src="https://img.shields.io/bundlephobia/minzip/leetils" alt="bundle size">
+  </a>
+  <img src="https://img.shields.io/badge/module%20formats-cjs,%20esm-green" alt="module formats: cjs, esm">
 </div>
 
 ---

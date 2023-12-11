@@ -1,6 +1,6 @@
 {
     "name": "leetils",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "description": "All (not really) of leetcode's problem solutions in one package.",
     "repository": {
         "type": "git",
