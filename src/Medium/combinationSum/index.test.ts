@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import combinationSum from '.';
+import { combinationSum } from '..';
 
 test('combinationSum: Given an array of numbers and a target number, it returns all combinations (of any length) of numbers that sum to the target. Each index in the array may only be used once', () => {
     expect(combinationSum([2, 3, 6, 7], 7)).toStrictEqual([[2, 2, 3], [7]]);

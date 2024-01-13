@@ -1,6 +1,4 @@
 export default (nums: number[], target: number) => {
-    if (nums.length == 2) return [0, 1];
-
     const mapping = new Map<number, number>();
 
     for (const [i, num] of nums.entries()) {

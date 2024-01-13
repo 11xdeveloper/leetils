@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import romanToInt from '.';
+import { romanToInt } from '..';
 
 test('RomanToInt: Given a string containing roman numerals, it returns the base 10 numerical equivalent.', () => {
     expect(romanToInt('III')).toBe(3);

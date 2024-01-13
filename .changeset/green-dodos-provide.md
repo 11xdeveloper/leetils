@@ -10,7 +10,6 @@
     -   romanToInt
     -   atoi
     -   combinationSum
-    -   mergeLists
     -   ListNode
         -   ListNode.from (Static)
         -   ListNode.push

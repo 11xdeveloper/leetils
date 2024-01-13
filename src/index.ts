@@ -5,7 +5,8 @@ export {
     longestCommonPrefix,
     isPalindrome,
     validBrackets,
-    romanToInt
+    romanToInt,
+    twoSum
 } from './Easy';
 
 export { atoi, combinationSum } from './Medium';

@@ -1,6 +1,10 @@
 {
-    "entry": ["src", "!src/**/*.test.*"],
-    "outDir": "dist",
+    "entry": ["./src", "!./src/**/*.test.*"],
     "format": ["cjs", "esm"],
-    "dts": true
+    "dts": true,
+    "outDir": "./dist",
+    "skipNodeModulesBundle": true,
+    "sourcemap": true,
+    "minify": true,
+    "splitting": false
 }

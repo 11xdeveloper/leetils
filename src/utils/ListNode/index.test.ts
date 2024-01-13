@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import { ListNode } from '../../index';
+import { ListNode } from '..';
 
 test('ListNode.from: Converts an array of numbers into ListNodes', () => {
     expect(ListNode.from([1, 2, 4])).toStrictEqual(
