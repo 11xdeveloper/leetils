@@ -17,3 +17,4 @@
         -   ListNode.getLastNode
         -   ListNode.sort
     -   containsDuplicate
+    -   isHappy

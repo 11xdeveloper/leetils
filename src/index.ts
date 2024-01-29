@@ -7,7 +7,8 @@ export {
     validBrackets,
     romanToInt,
     twoSum,
-    containsDuplicate
+    containsDuplicate,
+    isHappy
 } from './Easy';
 
 export { atoi, combinationSum } from './Medium';

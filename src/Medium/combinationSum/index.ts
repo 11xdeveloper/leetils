@@ -1,7 +1,7 @@
 export default (nums: number[], target: number) => {
     const result: number[][] = [];
 
-    const backtrack = (
+    const recurse = (
         start: number,
         currentSum: number,
         currentCombination: number[]
@@ -16,10 +16,10 @@ export default (nums: number[], target: number) => {
 
             if (currentSum + num > target) continue;
 
-            backtrack(i, currentSum + num, [...currentCombination, num]);
+            recurse(i, currentSum + num, [...currentCombination, num]);
         }
     };
 
-    backtrack(0, 0, []);
+    recurse(0, 0, []);
     return result;
 };
