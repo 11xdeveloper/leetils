@@ -6,7 +6,8 @@ export {
     isPalindrome,
     validBrackets,
     romanToInt,
-    twoSum
+    twoSum,
+    containsDuplicate
 } from './Easy';
 
 export { atoi, combinationSum } from './Medium';

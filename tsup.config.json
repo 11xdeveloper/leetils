@@ -6,5 +6,6 @@
     "skipNodeModulesBundle": true,
     "sourcemap": true,
     "minify": true,
-    "splitting": false
+    "splitting": false,
+    "treeshake": true
 }

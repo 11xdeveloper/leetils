@@ -16,3 +16,4 @@
         -   ListNode.toArray
         -   ListNode.getLastNode
         -   ListNode.sort
+    -   containsDuplicate

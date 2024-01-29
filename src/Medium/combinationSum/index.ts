@@ -7,7 +7,7 @@ export default (nums: number[], target: number) => {
         currentCombination: number[]
     ) => {
         if (currentSum === target) {
-            result.push([...currentCombination]);
+            result.push(currentCombination);
             return;
         }
 
