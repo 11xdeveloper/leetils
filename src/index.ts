@@ -8,7 +8,8 @@ export {
     romanToInt,
     twoSum,
     containsDuplicate,
-    isHappy
+    isHappy,
+    plusOne
 } from './Easy';
 
 export { atoi, combinationSum } from './Medium';

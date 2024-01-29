@@ -18,3 +18,4 @@
         -   ListNode.sort
     -   containsDuplicate
     -   isHappy
+    -   plusOne
