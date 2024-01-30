@@ -1,5 +1,5 @@
 ---
-'leetils': patch
+'leetils': minor
 ---
 
 -   Added
@@ -8,7 +8,7 @@
     -   isPalindrome
     -   validBrackets
     -   romanToInt
-    -   atoi
+    -   myAtoi
     -   combinationSum
     -   ListNode
         -   ListNode.from (Static)
