@@ -6,3 +6,4 @@ export { default as twoSum } from './twoSum';
 export { default as containsDuplicate } from './containsDuplicate';
 export { default as isHappy } from './isHappy';
 export { default as plusOne } from './plusOne';
+export { default as addBinary } from './addBinary';

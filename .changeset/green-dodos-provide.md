@@ -19,3 +19,4 @@
     -   containsDuplicate
     -   isHappy
     -   plusOne
+    -   addBinary

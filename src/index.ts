@@ -9,7 +9,8 @@ export {
     twoSum,
     containsDuplicate,
     isHappy,
-    plusOne
+    plusOne,
+    addBinary
 } from './Easy';
 
 export { atoi, combinationSum } from './Medium';
