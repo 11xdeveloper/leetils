@@ -1,65 +1,64 @@
 {
-    "name": "leetils",
-    "version": "0.1.6",
-    "description": "All (not really) of leetcode's problem solutions in one package.",
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
-    "exports": {
-        ".": {
-            "require": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            },
-            "import": {
-                "types": "./dist/index.d.mts",
-                "default": "./dist/index.mjs"
-            }
-        }
-    },
-    "author": {
-        "name": "Dawood Sulaiman Syed",
-        "email": "neighborhood10xdeveloper@gmail.com",
-        "url": "https://github.com/11xdeveloper"
-    },
-    "files": [
-        "dist",
-        "README.md"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/11xdeveloper/leetils.git"
-    },
-    "homepage": "https://github.com/11xdeveloper/leetils#readme",
-    "bugs": {
-        "url": "https://github.com/11xdeveloper/leetils/issues"
-    },
-    "keywords": [
-        "javascript",
-        "typescript",
-        "utilities-library",
-        "leetcode",
-        "leetcode-solutions",
-        "leetcode-javascript",
-        "leetcode-typescript"
-    ],
-    "license": "MIT",
-    "scripts": {
-        "build": "rimraf ./dist && tsup-node",
-        "release": "bun run build && changeset publish",
-        "format": "prettier --write .",
-        "lint": "tsc",
-        "check": "bun run format && bun run lint && bun test"
-    },
-    "devDependencies": {
-        "@changesets/cli": "^2.0.0",
-        "@types/bun": "^1.0.0",
-        "prettier": "^3.0.0",
-        "rimraf": "^5.0.0",
-        "tsup": "^8.0.0",
-        "typescript": "^5.0.0"
-    },
-    "publishConfig": {
-        "access": "public"
+  "name": "leetils",
+  "version": "0.1.6",
+  "description": "All (not really) of leetcode's problem solutions in one package.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     }
+  },
+  "author": {
+    "name": "Dawood Sulaiman Syed",
+    "email": "neighborhood10xdeveloper@gmail.com",
+    "url": "https://github.com/11xdeveloper"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/11xdeveloper/leetils.git"
+  },
+  "homepage": "https://github.com/11xdeveloper/leetils#readme",
+  "bugs": {
+    "url": "https://github.com/11xdeveloper/leetils/issues"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "utilities-library",
+    "leetcode",
+    "leetcode-solutions",
+    "leetcode-javascript",
+    "leetcode-typescript"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup-node",
+    "release": "bun run build && changeset publish",
+    "format": "prettier --write .",
+    "lint": "tsc",
+    "check": "bun run format && bun run lint && bun test"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.0.0",
+    "@types/bun": "^1.0.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
