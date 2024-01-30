@@ -1,6 +1,6 @@
----
-'leetils': minor
----
+# leetils
+
+## 0.0.0 - 0.1.7
 
 -   Added
     -   twoSum
