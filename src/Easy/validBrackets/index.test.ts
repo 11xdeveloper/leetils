@@ -1,8 +1,17 @@
-import { test, expect } from 'bun:test';
-import { validBrackets } from '..';
+import { test, expect, describe } from 'bun:test';
+import { validBrackets } from '../..';
 
-test('ValidBrackets: Given a string consisting of only brackets, it will return whether all bracket pairs are complete and valid.', () => {
-    expect(validBrackets('()')).toBe(true);
-    expect(validBrackets('()[]{}')).toBe(true);
-    expect(validBrackets('(]')).toBe(false);
+describe('Valid Brackets', () => {
+    test(`Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+    
+    1. Open brackets must be closed by the same type of brackets.
+    2. Open brackets must be closed in the correct order.
+    3. Every close bracket has a corresponding open bracket of the same type.
+    `, () => {
+        expect(validBrackets('()')).toBe(true);
+        expect(validBrackets('()[]{}')).toBe(true);
+        expect(validBrackets('(]')).toBe(false);
+    });
 });

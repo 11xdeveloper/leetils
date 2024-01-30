@@ -13,4 +13,4 @@ export {
     addBinary
 } from './Easy';
 
-export { atoi, combinationSum } from './Medium';
+export { myAtoi, combinationSum } from './Medium';
