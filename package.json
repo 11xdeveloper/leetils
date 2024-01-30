@@ -46,7 +46,6 @@
     "license": "MIT",
     "scripts": {
         "build": "tsup-node",
-        "release": "bun run build && changeset publish --otp=1",
         "format": "prettier --write .",
         "lint": "tsc",
         "check": "bun run format && bun run lint && bun test"
