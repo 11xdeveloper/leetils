@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/bun": "^1.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "@types/bun": "~1.2.12",
+    "tsup": "^8.4.0",
+    "typescript": "~5.8.3"
   },
   "type": "module",
   "module": "dist/index.mjs",
