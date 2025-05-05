@@ -1,17 +1,17 @@
 export default (n: number): boolean => {
-    const previous: number[] = [];
+	const previous: number[] = [];
 
-    const recurse = (num: number): boolean => {
-        if (previous.includes(num)) return false;
-        previous.push(num);
+	const recurse = (num: number): boolean => {
+		if (previous.includes(num)) return false;
+		previous.push(num);
 
-        const sum = Array.from(num.toString().split(''), Number).reduce(
-            (acc, x) => acc + x * x,
-            0
-        );
+		const sum = Array.from(num.toString().split(""), Number).reduce(
+			(acc, x) => acc + x * x,
+			0,
+		);
 
-        return sum === 1 ? true : recurse(sum);
-    };
+		return sum === 1 ? true : recurse(sum);
+	};
 
-    return recurse(n);
+	return recurse(n);
 };

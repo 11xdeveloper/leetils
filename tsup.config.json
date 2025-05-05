@@ -1,11 +1,11 @@
 {
-    "entry": ["./src", "!./src/**/*.test.*"],
-    "format": ["cjs", "esm"],
-    "dts": true,
-    "outDir": "./dist",
-    "skipNodeModulesBundle": true,
-    "sourcemap": true,
-    "minify": true,
-    "splitting": false,
-    "treeshake": true
+	"entry": ["./src", "!./src/**/*.test.*"],
+	"format": ["cjs", "esm"],
+	"dts": true,
+	"outDir": "./dist",
+	"skipNodeModulesBundle": true,
+	"sourcemap": true,
+	"minify": true,
+	"splitting": false,
+	"treeshake": true
 }

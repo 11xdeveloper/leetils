@@ -1,31 +1,31 @@
 {
-    "compilerOptions": {
-        "lib": ["ESNext"],
-        "module": "ESNext",
-        "target": "ESNext",
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"module": "ESNext",
+		"target": "ESNext",
 
-        "moduleResolution": "Bundler",
-        "moduleDetection": "force",
-        "allowImportingTsExtensions": true,
+		"moduleResolution": "Bundler",
+		"moduleDetection": "force",
+		"allowImportingTsExtensions": true,
 
-        "noEmit": true,
-        "downlevelIteration": true,
-        "allowSyntheticDefaultImports": true,
+		"noEmit": true,
+		"downlevelIteration": true,
+		"allowSyntheticDefaultImports": true,
 
-        "strict": true,
-        "allowUnusedLabels": false,
-        "allowUnreachableCode": false,
-        "exactOptionalPropertyTypes": true,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "skipLibCheck": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noUncheckedIndexedAccess": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "isolatedModules": true,
-        "allowJs": true,
-        "checkJs": true
-    }
+		"strict": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"skipLibCheck": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"isolatedModules": true,
+		"allowJs": true,
+		"checkJs": true
+	}
 }

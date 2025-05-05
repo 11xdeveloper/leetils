@@ -1,8 +1,8 @@
-import { test, expect, describe } from 'bun:test';
-import { myAtoi } from '../..';
+import { test, expect, describe } from "bun:test";
+import { myAtoi } from "../..";
 
-describe('String to Integer (atoi)', () => {
-    test(`Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+describe("String to Integer (atoi)", () => {
+	test(`Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
 
     The algorithm for myAtoi(string s) is as follows:
     
@@ -16,8 +16,8 @@ describe('String to Integer (atoi)', () => {
     Note:
     - Only the space character ' ' is considered a whitespace character.
     - Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.`, () => {
-        expect(myAtoi('42')).toBe(42);
-        expect(myAtoi('   -42')).toBe(-42);
-        expect(myAtoi('4193 with words')).toBe(4193);
-    });
+		expect(myAtoi("42")).toBe(42);
+		expect(myAtoi("   -42")).toBe(-42);
+		expect(myAtoi("4193 with words")).toBe(4193);
+	});
 });
