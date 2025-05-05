@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/11xdeveloper/leetils#readme">
-    <img alt="leetils" src="https://i.imgur.com/kuQlkxY.png" height="150px" />
+    <img alt="leetils" src="/logo.png" height="150px" />
   </a>
 </div>
 
@@ -15,14 +15,14 @@
   <a href="https://bundlephobia.com/package/leetils">
     <img src="https://img.shields.io/bundlephobia/minzip/leetils" alt="bundle size">
   </a>
-  <img src="https://img.shields.io/badge/module%20formats-cjs,%20esm-green" alt="module formats: cjs, esm">
+  <img src="https://img.shields.io/badge/module%20formats-esm-green" alt="module formats: esm">
 </div>
 
 ---
 
 ## Installation
 
-Use the `install` command of your favourite package manager!
+Use the `install` command of your preferred package manager.
 
 e.g.
 
@@ -39,13 +39,7 @@ Simply import which ever utilities you would like to use
 e.g.
 
 ```ts
-import { combinationSum } from 'leetils';
+import { combinationSum } from "leetils";
 
 console.log(combinationSum([2, 3, 6, 7], 7)); // [[2, 2, 3], [7]]
 ```
-
----
-
-## Contribute
-
-TODO
