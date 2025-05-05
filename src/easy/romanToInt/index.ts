@@ -1,4 +1,4 @@
-import { type RomanNumeral, RomanNumerals } from "../../utils/constants";
+import { type RomanNumeral, RomanNumerals } from "../../lib/constants";
 
 export const romanToInt = (roman: string): number => {
 	if (

@@ -1,5 +1,5 @@
-export * from "./utils/constants";
-export * from "./utils/ListNode";
+export * from "./lib/constants";
+export * from "./lib/ListNode";
 
 export * from "./easy/addBinary";
 export * from "./easy/containsDuplicate";
@@ -11,5 +11,6 @@ export * from "./easy/romanToInt";
 export * from "./easy/twoSum";
 export * from "./easy/validBrackets";
 
-export * from "./medium/atoi";
+export * from "./medium/addTwoNumbers";
 export * from "./medium/combinationSum";
+export * from "./medium/atoi";
