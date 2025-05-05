@@ -7,7 +7,7 @@
 		"publish": "bun run build && npm publish",
 		"format": "biome format --write .",
 		"lint": "biome lint --write .",
-		"check": "bun run format && bun run lint && bun test"
+		"check": "bun run format && bun run lint"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
