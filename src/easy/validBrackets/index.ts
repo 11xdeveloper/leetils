@@ -1,4 +1,4 @@
-import { BracketPairMapping } from "../../constants";
+import { BracketPairMapping } from "../../utils/constants";
 
 export const validBrackets = (str: string): boolean => {
 	const stack: string[] = [];
