@@ -1,17 +1,40 @@
-import { test, expect, describe } from "bun:test";
-import { validBrackets } from ".";
+import { describe, expect, it } from "bun:test";
+import { validBrackets } from "./index";
 
-describe("Valid Brackets", () => {
-	test(`Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
-    An input string is valid if:
-    
-    1. Open brackets must be closed by the same type of brackets.
-    2. Open brackets must be closed in the correct order.
-    3. Every close bracket has a corresponding open bracket of the same type.
-    `, () => {
+describe("validBrackets", () => {
+	it("should validate simple bracket pairs", () => {
 		expect(validBrackets("()")).toBe(true);
+		expect(validBrackets("[]")).toBe(true);
+		expect(validBrackets("{}")).toBe(true);
+	});
+
+	it("should validate multiple bracket pairs", () => {
 		expect(validBrackets("()[]{}")).toBe(true);
+		expect(validBrackets("([{}])")).toBe(true);
+		expect(validBrackets("{[]}")).toBe(true);
+	});
+
+	it("should detect mismatched brackets", () => {
 		expect(validBrackets("(]")).toBe(false);
+		expect(validBrackets("([)]")).toBe(false);
+		expect(validBrackets("{[}]")).toBe(false);
+	});
+
+	it("should handle nested brackets", () => {
+		expect(validBrackets("((()))")).toBe(true);
+		expect(validBrackets("[[[]]]")).toBe(true);
+		expect(validBrackets("{{{}}}")).toBe(true);
+	});
+
+	it("should handle empty and single character strings", () => {
+		expect(validBrackets("")).toBe(true);
+		expect(validBrackets("(")).toBe(false);
+		expect(validBrackets("}")).toBe(false);
+	});
+
+	it("should handle complex combinations", () => {
+		expect(validBrackets("({[]}){}")).toBe(true);
+		expect(validBrackets("((())){[]}")).toBe(true);
+		expect(validBrackets("((())){[]}(")).toBe(false);
 	});
 });

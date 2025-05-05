@@ -1,23 +1,46 @@
-import { test, expect, describe } from "bun:test";
-import { myAtoi } from ".";
+import { describe, expect, it } from "bun:test";
+import { myAtoi } from "./index";
 
-describe("String to Integer (atoi)", () => {
-	test(`Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
-
-    The algorithm for myAtoi(string s) is as follows:
-    
-    1. Read in and ignore any leading whitespace.
-    2. Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
-    3. Read in next the characters until the next non-digit character or the end of the input is reached. The rest of the string is ignored.
-    4. Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
-    5. If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
-    6. Return the integer as the final result.
-    
-    Note:
-    - Only the space character ' ' is considered a whitespace character.
-    - Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.`, () => {
+describe("myAtoi", () => {
+	it("should convert basic number strings", () => {
 		expect(myAtoi("42")).toBe(42);
 		expect(myAtoi("   -42")).toBe(-42);
 		expect(myAtoi("4193 with words")).toBe(4193);
+	});
+
+	it("should handle whitespace", () => {
+		expect(myAtoi("     ")).toBe(0);
+		expect(myAtoi("   +1")).toBe(1);
+		expect(myAtoi("   -1   ")).toBe(-1);
+	});
+
+	it("should handle invalid inputs", () => {
+		expect(myAtoi("words and 987")).toBe(0);
+		expect(myAtoi("+")).toBe(0);
+		expect(myAtoi("-")).toBe(0);
+		expect(myAtoi("")).toBe(0);
+	});
+
+	it("should handle leading zeros", () => {
+		expect(myAtoi("000123")).toBe(123);
+		expect(myAtoi("-000123")).toBe(-123);
+		expect(myAtoi("+000123")).toBe(123);
+	});
+
+	it("should handle decimal numbers", () => {
+		expect(myAtoi("3.14159")).toBe(3);
+		expect(myAtoi("-3.14159")).toBe(-3);
+	});
+
+	it("should handle special characters", () => {
+		expect(myAtoi("  +  413")).toBe(0);
+		expect(myAtoi("  -  413")).toBe(0);
+		expect(myAtoi("00-42a1234")).toBe(0);
+	});
+
+	it("should handle large numbers", () => {
+		expect(myAtoi("2147483648")).toBe(2147483648);
+		expect(myAtoi("-2147483649")).toBe(-2147483649);
+		expect(myAtoi("9999999999")).toBe(9999999999);
 	});
 });

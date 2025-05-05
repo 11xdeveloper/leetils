@@ -1,22 +1,69 @@
-import { test, expect, describe } from "bun:test";
-import { addTwoNumbers } from ".";
-import { listNodeFromArray } from "../../lib/utils";
+import { describe, expect, it } from "bun:test";
+import { addTwoNumbers } from "./index";
+import { ListNode } from "../../lib/ListNode";
 
-describe("Add Two Numbers", () => {
-	test(`You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+// Helper function to create linked list from array
+function createList(arr: number[]): ListNode | null {
+	if (arr.length === 0) return null;
+	const head = new ListNode(arr[0]);
+	let current = head;
+	for (let i = 1; i < arr.length; i++) {
+		current.next = new ListNode(arr[i]);
+		current = current.next;
+	}
+	return head;
+}
 
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.`, () => {
-		expect(
-			addTwoNumbers(listNodeFromArray([2, 4, 3]), listNodeFromArray([5, 6, 4])),
-		).toEqual(listNodeFromArray([7, 0, 8]));
-		expect(
-			addTwoNumbers(listNodeFromArray([0]), listNodeFromArray([0])),
-		).toEqual(listNodeFromArray([0]));
-		expect(
-			addTwoNumbers(
-				listNodeFromArray([9, 9, 9, 9, 9, 9, 9]),
-				listNodeFromArray([9, 9, 9, 9]),
-			),
-		).toEqual(listNodeFromArray([8, 9, 9, 9, 0, 0, 0, 1]));
+// Helper function to convert linked list to array for easier testing
+function listToArray(node: ListNode | null): number[] {
+	const result: number[] = [];
+	let current = node;
+	while (current !== null) {
+		result.push(current.val);
+		current = current.next;
+	}
+	return result;
+}
+
+describe("addTwoNumbers", () => {
+	it("should add two numbers correctly", () => {
+		const l1 = createList([2, 4, 3]);
+		const l2 = createList([5, 6, 4]);
+		const result = addTwoNumbers(l1, l2);
+		expect(listToArray(result)).toEqual([7, 0, 8]);
+	});
+
+	it("should handle numbers of different lengths", () => {
+		const l1 = createList([9, 9, 9, 9]);
+		const l2 = createList([9, 9, 9]);
+		const result = addTwoNumbers(l1, l2);
+		expect(listToArray(result)).toEqual([8, 9, 9, 0, 1]);
+	});
+
+	it("should handle zero values", () => {
+		const l1 = createList([0]);
+		const l2 = createList([0]);
+		const result = addTwoNumbers(l1, l2);
+		expect(listToArray(result)).toEqual([0]);
+	});
+
+	it("should handle single digit numbers", () => {
+		const l1 = createList([1]);
+		const l2 = createList([9]);
+		const result = addTwoNumbers(l1, l2);
+		expect(listToArray(result)).toEqual([0, 1]);
+	});
+
+	it("should handle large numbers with multiple carries", () => {
+		const l1 = createList([9, 9, 9, 9, 9, 9, 9]);
+		const l2 = createList([9, 9, 9, 9]);
+		const result = addTwoNumbers(l1, l2);
+		expect(listToArray(result)).toEqual([8, 9, 9, 9, 0, 0, 0, 1]);
+	});
+
+	it("should handle when one list is empty", () => {
+		const l1 = createList([1, 2, 3]);
+		const result = addTwoNumbers(l1, null);
+		expect(listToArray(result)).toEqual([1, 2, 3]);
 	});
 });
