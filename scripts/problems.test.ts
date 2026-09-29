@@ -25,6 +25,12 @@ describe("exportName", () => {
 		);
 		expect(exportName("house-robber-iii")).toBe("houseRobberIII");
 	});
+
+	it("uses PascalCase for classes", () => {
+		expect(exportName("lru-cache", "class")).toBe("LruCache");
+		expect(exportName("min-stack", "class")).toBe("MinStack");
+		expect(exportName("2-keys-keyboard", "class")).toBe("TwoKeysKeyboard");
+	});
 });
 
 describe("problemFolder", () => {

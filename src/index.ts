@@ -54,5 +54,8 @@ export { plusOne } from "./problems/0066-plus-one";
 export { addBinary } from "./problems/0067-add-binary";
 export { happyNumber } from "./problems/0202-happy-number";
 export { containsDuplicate } from "./problems/0217-contains-duplicate";
+export * from "./structures/graph-node";
 export * from "./structures/list-node";
+export * from "./structures/random-list-node";
 export * from "./structures/tree-node";
+export * from "./structures/tree-node-with-next";
