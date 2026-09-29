@@ -62,6 +62,12 @@ import.
   not defined.
 - **Inputs aren't modified** unless the problem requires it. Parameters that
   are left alone are typed `readonly`.
+- **Problems given an API**, like `isBadVersion` or `read4`, follow
+  LeetCode's JavaScript version: pass in the API and get back the solving
+  function, e.g. `firstBadVersion(isBadVersion)(n)`.
+- **Randomised solutions** take an optional last argument, a random number
+  source like `Math.random` (the default). Pass a seeded one for reproducible
+  results.
 - **Each solution's doc comment** has the problem link, difficulty, approach
   and time/space complexity, so your editor shows them on hover.
 
