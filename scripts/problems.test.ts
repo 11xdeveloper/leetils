@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { exportName, problemFolder, titleFromSlug } from "./problems";
+import { exportName, problemFolder } from "./problems";
 
 describe("exportName", () => {
 	it("camel-cases the slug", () => {
@@ -24,13 +24,6 @@ describe("exportName", () => {
 			"twoSumIIInputArrayIsSorted",
 		);
 		expect(exportName("house-robber-iii")).toBe("houseRobberIII");
-	});
-});
-
-describe("titleFromSlug", () => {
-	it("title-cases the slug", () => {
-		expect(titleFromSlug("two-sum")).toBe("Two Sum");
-		expect(titleFromSlug("house-robber-ii")).toBe("House Robber II");
 	});
 });
 

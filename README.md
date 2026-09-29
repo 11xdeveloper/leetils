@@ -79,24 +79,31 @@ across problems.
 
 ## Contributing
 
-You need [Bun](https://bun.sh). Run `bun install`, then scaffold a problem with
-its number and slug:
+[PROBLEMS.md](PROBLEMS.md) lists every LeetCode problem and whether it's
+implemented yet. Pick one, then scaffold it by number:
 
 ```bash
-bun run new 125 valid-palindrome
+bun run new 125
 ```
 
-This creates `src/problems/0125-valid-palindrome/` with a solution and test
-file to fill in, and adds the export to `src/index.ts`. Tests fail until the
-TODOs are done.
+You need [Bun](https://bun.sh) and a `bun install` first. This creates
+`src/problems/0125-valid-palindrome/` with a solution and test file to fill in,
+using the title, slug and difficulty from LeetCode, and updates `src/index.ts`
+and the problem list. Tests fail until the TODOs are done.
 
 `src/index.test.ts` checks that every problem:
 
-- is in a folder named `<4-digit number>-<slug>`
+- is in a folder named `<4-digit number>-<slug>`, matching LeetCode's number
+  and slug
 - exports exactly one function, named after its slug
-- has a doc comment starting with its number and title, with `@see`,
-  `@difficulty`, `@timeComplexity` and `@spaceComplexity` tags
+- has a doc comment starting with its number and LeetCode's title, with
+  `@see`, `@difficulty` (matching LeetCode's), `@timeComplexity` and
+  `@spaceComplexity` tags
 - has tests
+
+The problem list comes from a snapshot of LeetCode's catalogue in
+`data/leetcode-problems.json`, so builds don't depend on LeetCode being
+reachable. Run `bun run sync` to pick up newly released problems.
 
 | Script | What it does |
 | --- | --- |
@@ -107,7 +114,9 @@ TODOs are done.
 | `bun run build` | Build `dist/` with tsdown and update `exports` in package.json |
 | `bun run check:package` | Check the built package with publint and attw |
 | `bun run smoke` | Import the built package in Node |
-| `bun run generate` | Regenerate `src/index.ts` |
+| `bun run new <number>` | Scaffold a problem |
+| `bun run generate` | Regenerate `src/index.ts` and the problem list |
+| `bun run sync` | Download LeetCode's latest problem list, then regenerate |
 | `bun run changeset` | Describe your change for the changelog |
 
 ### Releasing

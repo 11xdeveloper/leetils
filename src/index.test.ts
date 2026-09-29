@@ -1,22 +1,48 @@
 // Checks the conventions every problem folder must follow (see README.md).
 
 import { describe, expect, it } from "bun:test";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { listProblems, PROBLEMS_DIR, renderIndex } from "../scripts/problems";
+import {
+	listProblems,
+	PROBLEM_PAGES_DIR,
+	PROBLEMS_DIR,
+	problemUrl,
+	ROOT_DIR,
+	readCatalogue,
+	renderGeneratedFiles,
+} from "../scripts/problems";
 
-describe("src/index.ts", () => {
-	it("is up to date (run `bun run generate`)", () => {
-		expect(readFileSync(join(import.meta.dirname, "index.ts"), "utf8")).toBe(
-			renderIndex(),
+describe("generated files (run `bun run generate` to update)", () => {
+	const files = renderGeneratedFiles();
+
+	for (const [path, content] of files) {
+		it(`${path} is up to date`, () => {
+			expect(readFileSync(join(ROOT_DIR, path), "utf8")).toBe(content);
+		});
+	}
+
+	it(`${PROBLEM_PAGES_DIR} has no stale pages`, () => {
+		const pages = readdirSync(join(ROOT_DIR, PROBLEM_PAGES_DIR)).map(
+			(file) => `${PROBLEM_PAGES_DIR}/${file}`,
 		);
+		expect(pages.filter((page) => !files.has(page))).toEqual([]);
 	});
 });
+
+const catalogue = new Map(
+	readCatalogue().problems.map((problem) => [problem.number, problem]),
+);
 
 for (const { folder, number, slug, exportName } of listProblems()) {
 	describe(`src/problems/${folder}`, () => {
 		const dir = join(PROBLEMS_DIR, folder);
 		const source = readFileSync(join(dir, "index.ts"), "utf8");
+		const leetcode = catalogue.get(number);
+
+		it("matches LeetCode's number and slug", () => {
+			expect(leetcode?.slug).toBe(slug);
+		});
 
 		it(`exports only ${exportName}`, async () => {
 			const module = await import(join(dir, "index.ts"));
@@ -24,16 +50,16 @@ for (const { folder, number, slug, exportName } of listProblems()) {
 			expect(module[exportName]).toBeFunction();
 		});
 
-		it("starts its doc comment with the problem number and title", () => {
-			expect(source).toMatch(new RegExp(`/\\*\\*\\n \\* ${number}\\. \\S`));
+		it("starts its doc comment with the problem number and LeetCode's title", () => {
+			expect(source).toContain(`/**\n * ${number}. ${leetcode?.title}\n`);
 		});
 
 		it("links to the problem on LeetCode", () => {
-			expect(source).toContain(`@see https://leetcode.com/problems/${slug}/\n`);
+			expect(source).toContain(`@see ${problemUrl(slug)}\n`);
 		});
 
-		it("states its difficulty", () => {
-			expect(source).toMatch(/@difficulty (Easy|Medium|Hard)\n/);
+		it("states LeetCode's difficulty", () => {
+			expect(source).toContain(`@difficulty ${leetcode?.difficulty}\n`);
 		});
 
 		it("states its time and space complexity", () => {

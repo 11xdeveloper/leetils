@@ -45,7 +45,8 @@
 		"format": "biome check --write .",
 		"check:package": "publint && attw --pack . --profile esm-only",
 		"smoke": "node scripts/smoke.mjs",
-		"generate": "bun scripts/generate-index.ts",
+		"generate": "bun scripts/generate.ts",
+		"sync": "bun scripts/sync-problems.ts",
 		"new": "bun scripts/new-problem.ts",
 		"changeset": "changeset",
 		"prepublishOnly": "bun run build"

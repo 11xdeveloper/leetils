@@ -1,6 +1,7 @@
-// Scaffolds a new problem folder and adds it to src/index.ts.
-// Usage: bun run new <number> <slug>
-// Example: bun run new 125 valid-palindrome
+// Scaffolds a new problem folder from LeetCode's problem list, then
+// regenerates src/index.ts and the problem list.
+// Usage: bun run new <number>
+// Example: bun run new 125
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -9,49 +10,49 @@ import {
 	listProblems,
 	PROBLEMS_DIR,
 	problemFolder,
-	renderIndex,
-	SLUG,
-	SRC_DIR,
-	titleFromSlug,
+	problemUrl,
+	readCatalogue,
+	writeGeneratedFiles,
 } from "./problems";
 
-const [numberArg = "", slug = ""] = process.argv.slice(2);
-const number = Number(numberArg);
+const number = Number(process.argv[2]);
 
-if (
-	!Number.isInteger(number) ||
-	number < 1 ||
-	number > 9999 ||
-	!SLUG.test(slug)
-) {
-	console.error("Usage: bun run new <number> <slug>");
-	console.error("Example: bun run new 125 valid-palindrome");
+if (!Number.isInteger(number) || number < 1) {
+	console.error("Usage: bun run new <number>");
+	console.error("Example: bun run new 125");
 	process.exit(1);
 }
 
-const folder = problemFolder(number, slug);
-const dir = join(PROBLEMS_DIR, folder);
-const name = exportName(slug);
+const problem = readCatalogue().problems.find((p) => p.number === number);
+if (!problem) {
+	console.error(
+		`Problem ${number} isn't in data/leetcode-problems.json. Run \`bun run sync\` to update it.`,
+	);
+	process.exit(1);
+}
 
-const existing = listProblems().find(
-	(problem) => problem.number === number || problem.slug === slug,
-);
+const existing = listProblems().find((p) => p.number === number);
 if (existing) {
 	console.error(`src/problems/${existing.folder} already exists`);
 	process.exit(1);
 }
+
+const { title, slug, difficulty } = problem;
+const folder = problemFolder(number, slug);
+const dir = join(PROBLEMS_DIR, folder);
+const name = exportName(slug);
 
 mkdirSync(dir, { recursive: true });
 
 writeFileSync(
 	join(dir, "index.ts"),
 	`/**
- * ${number}. ${titleFromSlug(slug)}
+ * ${number}. ${title}
  *
  * TODO: Summarise the problem, then the approach.
  *
- * @see https://leetcode.com/problems/${slug}/
- * @difficulty TODO
+ * @see ${problemUrl(slug)}
+ * @difficulty ${difficulty}
  * @timeComplexity TODO
  * @spaceComplexity TODO
  *
@@ -69,7 +70,7 @@ writeFileSync(
 	`import { describe, expect, it } from "bun:test";
 import { ${name} } from ".";
 
-describe("${number}. ${titleFromSlug(slug)}", () => {
+describe(${JSON.stringify(`${number}. ${title}`)}, () => {
 	it("solves the examples from the problem statement", () => {
 		expect(${name}()).toEqual(undefined); // TODO
 	});
@@ -77,9 +78,7 @@ describe("${number}. ${titleFromSlug(slug)}", () => {
 `,
 );
 
-writeFileSync(join(SRC_DIR, "index.ts"), renderIndex());
+writeGeneratedFiles();
 
 console.log(`Created src/problems/${folder} and exported ${name}.`);
-console.log(
-	"Fill in the TODOs, including the title if LeetCode's differs from the slug.",
-);
+console.log(`Problem: ${problemUrl(slug)}`);
