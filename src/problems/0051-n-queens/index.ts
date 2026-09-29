@@ -28,7 +28,7 @@ export const nQueens = (n: number): string[][] => {
 		if (row === n) {
 			boards.push(
 				queenColumns.map(
-					(column) => ".".repeat(column) + "Q" + ".".repeat(n - column - 1),
+					(column) => `${".".repeat(column)}Q${".".repeat(n - column - 1)}`,
 				),
 			);
 			return;
