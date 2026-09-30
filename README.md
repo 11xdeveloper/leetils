@@ -42,7 +42,7 @@ combinationSum([2, 3, 6, 7], 7); // [[2, 2, 3], [7]]
 Linked list, tree and graph problems use the same node classes LeetCode
 provides: `ListNode`, `TreeNode`, `GraphNode`, `RandomListNode`,
 `MultilevelListNode`, `TreeNodeWithNext`, `TreeNodeWithParent`,
-`NaryTreeNode`, `QuadTreeNode` and `NestedInteger`. The package also exports
+`TreeNodeWithRandom`, `NaryTreeNode`, `QuadTreeNode` and `NestedInteger`. The package also exports
 helpers to convert them to and from LeetCode's array formats:
 
 ```ts
