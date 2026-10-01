@@ -1,7 +1,0 @@
----
-"leetils": minor
----
-
-Add solutions for problems 301 to 350: `removeInvalidParentheses`, `smallestRectangleEnclosingBlackPixels`, `RangeSumQueryImmutable`, `RangeSumQuery2dImmutable`, `numberOfIslandsII`, `additiveNumber`, `RangeSumQueryMutable`, `RangeSumQuery2dMutable`, `bestTimeToBuyAndSellStockWithCooldown`, `minimumHeightTrees`, `sparseMatrixMultiplication`, `burstBalloons`, `superUglyNumber`, `binaryTreeVerticalOrderTraversal`, `countOfSmallerNumbersAfterSelf`, `removeDuplicateLetters`, `shortestDistanceFromAllBuildings`, `maximumProductOfWordLengths`, `bulbSwitcher`, `generalizedAbbreviation`, `createMaximumNumber`, `coinChange`, `numberOfConnectedComponentsInAnUndirectedGraph`, `wiggleSortII`, `maximumSizeSubarraySumEqualsK`, `powerOfThree`, `countOfRangeSum`, `oddEvenLinkedList`, `longestIncreasingPathInAMatrix`, `patchingArray`, `verifyPreorderSerializationOfABinaryTree`, `reconstructItinerary`, `largestBstSubtree`, `increasingTripletSubsequence`, `selfCrossing`, `palindromePairs`, `houseRobberIII`, `countingBits`, `nestedListWeightSum`, `longestSubstringWithAtMostKDistinctCharacters`, `FlattenNestedListIterator`, `powerOfFour`, `integerBreak`, `reverseString`, `reverseVowelsOfAString`, `MovingAverageFromDataStream`, `topKFrequentElements`, `DesignTicTacToe`, `intersectionOfTwoArrays` and `intersectionOfTwoArraysII`.
-
-Also adds `NestedInteger`, matching the class LeetCode provides for nested list problems, with `nestedListFromArray` and `nestedListToArray` to convert it to and from nested arrays.
