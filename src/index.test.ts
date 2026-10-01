@@ -51,7 +51,9 @@ for (const { folder, number, slug, exportName } of listProblems()) {
 		});
 
 		it("starts its doc comment with the problem number and LeetCode's title", () => {
-			expect(source).toContain(`/**\n * ${number}. ${leetcode?.title}\n`);
+			expect(source).toContain(
+				`/**\n * ${number}. ${leetcode?.title.trim()}\n`,
+			);
 		});
 
 		it("links to the problem on LeetCode", () => {

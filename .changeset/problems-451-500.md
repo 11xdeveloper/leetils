@@ -1,0 +1,5 @@
+---
+"leetils": minor
+---
+
+Add solutions for problems 451 to 500: `sortCharactersByFrequency`, `minimumNumberOfArrowsToBurstBalloons`, `minimumMovesToEqualArrayElements`, `fourSumII`, `assignCookies`, `oneThreeTwoPattern`, `circularArrayLoop`, `poorPigs`, `repeatedSubstringPattern`, `LfuCache`, `hammingDistance`, `minimumMovesToEqualArrayElementsII`, `islandPerimeter`, `canIWin`, `optimalAccountBalancing`, `countTheRepetitions`, `uniqueSubstringsInWraparoundString`, `validateIpAddress`, `convexPolygon`, `implementRand10UsingRand7`, `encodeStringWithShortestLength`, `concatenatedWords`, `matchsticksToSquare`, `onesAndZeroes`, `heaters`, `numberComplement`, `totalHammingDistance`, `GenerateRandomPointInACircle`, `largestPalindromeProduct`, `slidingWindowMedian`, `magicalString`, `licenseKeyFormatting`, `smallestGoodBase`, `findPermutation`, `maxConsecutiveOnes`, `predictTheWinner`, `maxConsecutiveOnesII`, `zumaGame`, `robotRoomCleaner`, `theMaze`, `nonDecreasingSubsequences`, `constructTheRectangle`, `reversePairs`, `targetSum`, `teemoAttacking`, `nextGreaterElementI`, `RandomPointInNonOverlappingRectangles`, `diagonalTraverse`, `theMazeIII` and `keyboardRow`.

@@ -24,14 +24,39 @@ export const SLUG: RegExp = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /** A problem folder: the zero-padded problem number followed by its slug, e.g. `0001-two-sum`. */
 export const PROBLEM_FOLDER: RegExp = /^(\d{4})-([a-z0-9]+(?:-[a-z0-9]+)*)$/;
 
+/** A solution exports a function, or a class for design problems. */
+export type ExportKind = "function" | "class";
+
 export interface Problem {
 	folder: string;
 	number: number;
 	slug: string;
+	kind: ExportKind;
 	exportName: string;
 }
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
+
+/** LeetCode's problem categories, which decide the language a problem is solved in. */
+export type Category =
+	| "algorithms"
+	| "javascript"
+	| "database"
+	| "pandas"
+	| "shell"
+	| "concurrency";
+
+/**
+ * Categories that aren't TypeScript problems, with how the problem list
+ * describes them. They're out of scope, and left out of the progress totals.
+ * LeetCode only accepts concurrency solutions in languages with threads.
+ */
+export const OUT_OF_SCOPE: Readonly<Partial<Record<Category, string>>> = {
+	database: "SQL",
+	pandas: "pandas",
+	shell: "Shell",
+	concurrency: "Concurrency",
+};
 
 /** A problem as listed by LeetCode. */
 export interface LeetCodeProblem {
@@ -39,8 +64,12 @@ export interface LeetCodeProblem {
 	title: string;
 	slug: string;
 	difficulty: Difficulty;
+	category: Category;
 	premium: boolean;
 }
+
+export const inScope = (problem: LeetCodeProblem): boolean =>
+	OUT_OF_SCOPE[problem.category] === undefined;
 
 /** Every LeetCode problem, as downloaded by `bun run sync`. */
 export interface Catalogue {
@@ -69,8 +98,9 @@ const capitalize = (word: string): string =>
 		: word.charAt(0).toUpperCase() + word.slice(1);
 
 /**
- * Derives a solution's export name from its LeetCode slug. Slugs are unique,
- * so the names never collide.
+ * Derives a solution's export name from its LeetCode slug: camelCase for
+ * functions, PascalCase for classes. Slugs are unique, so the names never
+ * collide.
  *
  * Leading digits are spelled out so the name is a valid identifier, and roman
  * numeral suffixes are upper-cased.
@@ -79,15 +109,23 @@ const capitalize = (word: string): string =>
  * exportName("two-sum"); // "twoSum"
  * exportName("3sum-closest"); // "threeSumClosest"
  * exportName("two-sum-ii-input-array-is-sorted"); // "twoSumIIInputArrayIsSorted"
+ * exportName("lru-cache", "class"); // "LruCache"
  */
-export const exportName = (slug: string): string => {
+export const exportName = (
+	slug: string,
+	kind: ExportKind = "function",
+): string => {
 	const leadingDigits = /^\d*/.exec(slug)?.[0] ?? "";
 	const words = [
 		...Array.from(leadingDigits, (digit) => DIGIT_WORDS[Number(digit)] ?? ""),
 		...slug.slice(leadingDigits.length).split("-"),
 	].filter((word) => word !== "");
 
-	return words.map((word, i) => (i === 0 ? word : capitalize(word))).join("");
+	return words
+		.map((word, i) =>
+			i === 0 && kind === "function" ? word : capitalize(word),
+		)
+		.join("");
 };
 
 export const problemFolder = (number: number, slug: string): string =>
@@ -104,11 +142,19 @@ export const listProblems = (): Problem[] =>
 					`src/problems/${folder} must be named <4-digit number>-<leetcode-slug>, e.g. 0001-two-sum`,
 				);
 			}
+			const source = readFileSync(
+				join(PROBLEMS_DIR, folder, "index.ts"),
+				"utf8",
+			);
+			const kind: ExportKind = /^export class /m.test(source)
+				? "class"
+				: "function";
 			return {
 				folder,
 				number: Number(match[1]),
 				slug: match[2],
-				exportName: exportName(match[2]),
+				kind,
+				exportName: exportName(match[2], kind),
 			};
 		})
 		.toSorted((a, b) => a.number - b.number);
@@ -172,10 +218,12 @@ export const renderProblemList = (): Map<string, string> => {
 	);
 	const countDone = (list: LeetCodeProblem[]): number =>
 		list.filter(({ number }) => implemented.has(number)).length;
-	const progress = (label: string, list: LeetCodeProblem[]): string => {
+	const progress = (label: string, all: LeetCodeProblem[]): string => {
+		const list = all.filter(inScope);
 		const done = countDone(list);
 		return `| ${label} | ${done} | ${list.length} | ${percent(done, list.length)} |`;
 	};
+	const outOfScope = problems.filter((problem) => !inScope(problem));
 
 	const pages = new Map<number, LeetCodeProblem[]>();
 	for (const problem of problems) {
@@ -191,6 +239,8 @@ export const renderProblemList = (): Map<string, string> => {
 			"# Problems",
 			"",
 			"Every LeetCode problem and whether leetils implements it.",
+			"",
+			`${outOfScope.length} problems are out of scope and left out of the totals below, because they're solved in SQL, pandas, shell script or with threads rather than TypeScript.`,
 			"",
 			`${GENERATED_NOTICE} Problems come from [${CATALOGUE_FILE}](${CATALOGUE_FILE}), last synced with LeetCode on ${syncedAt} by \`bun run sync\`.`,
 			"",
@@ -221,12 +271,15 @@ export const renderProblemList = (): Map<string, string> => {
 	);
 
 	for (const [first, list] of pages) {
-		const rows = list.map(({ number, title, slug, difficulty, premium }) => {
+		const rows = list.map((problem) => {
+			const { number, title, slug, difficulty, category, premium } = problem;
 			const solution = implemented.get(number);
 			const link = `[${escapeMarkdown(title)}](${problemUrl(slug)})${premium ? " 🔒" : ""}`;
 			const status = solution
 				? `✅ [\`${solution.exportName}\`](../../src/problems/${solution.folder}/index.ts)`
-				: "";
+				: inScope(problem)
+					? ""
+					: `— ${OUT_OF_SCOPE[category]}`;
 			return `| ${number} | ${link} | ${difficulty} | ${status} |`;
 		});
 
@@ -237,7 +290,7 @@ export const renderProblemList = (): Map<string, string> => {
 				"",
 				`[All problems](../../${PROBLEM_LIST_FILE}). 🔒 marks LeetCode Premium problems. ${GENERATED_NOTICE}`,
 				"",
-				`**${countDone(list)} of ${list.length} implemented.**`,
+				`**${countDone(list)} of ${list.filter(inScope).length} implemented.** Problems marked — are out of scope.`,
 				"",
 				"| # | Problem | Difficulty | Implemented |",
 				"| ---: | --- | --- | --- |",

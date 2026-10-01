@@ -7,6 +7,7 @@ import { dirname, join } from "node:path";
 import {
 	CATALOGUE_FILE,
 	type Catalogue,
+	type Category,
 	type Difficulty,
 	type LeetCodeProblem,
 	ROOT_DIR,
@@ -31,16 +32,45 @@ const DIFFICULTIES: Record<number, Difficulty> = {
 	3: "Hard",
 };
 
-const response = await fetch("https://leetcode.com/api/problems/all/", {
-	headers: {
-		"User-Agent": "leetils (https://github.com/11xdeveloper/leetils)",
-	},
-});
-if (!response.ok) {
-	throw new Error(`LeetCode responded with ${response.status}`);
+// A problem listed in several categories gets the first of them here.
+const CATEGORIES: readonly Category[] = [
+	"algorithms",
+	"javascript",
+	"database",
+	"pandas",
+	"shell",
+	"concurrency",
+];
+
+const fetchProblems = async (
+	category: string,
+): Promise<ApiResponse["stat_status_pairs"]> => {
+	const response = await fetch(
+		`https://leetcode.com/api/problems/${category}/`,
+		{
+			headers: {
+				"User-Agent": "leetils (https://github.com/11xdeveloper/leetils)",
+			},
+		},
+	);
+	if (!response.ok) {
+		throw new Error(
+			`LeetCode responded with ${response.status} for ${category}`,
+		);
+	}
+	return ((await response.json()) as ApiResponse).stat_status_pairs;
+};
+
+const categories = new Map<number, Category>();
+for (const category of CATEGORIES) {
+	for (const { stat } of await fetchProblems(category)) {
+		if (!categories.has(stat.frontend_question_id)) {
+			categories.set(stat.frontend_question_id, category);
+		}
+	}
 }
 
-const { stat_status_pairs } = (await response.json()) as ApiResponse;
+const stat_status_pairs = await fetchProblems("all");
 
 const problems = stat_status_pairs
 	.map(({ stat, difficulty, paid_only }): LeetCodeProblem => {
@@ -48,11 +78,16 @@ const problems = stat_status_pairs
 		if (!level) {
 			throw new Error(`Unknown difficulty level ${difficulty.level}`);
 		}
+		const category = categories.get(stat.frontend_question_id);
+		if (!category) {
+			throw new Error(`Problem ${stat.frontend_question_id} has no category`);
+		}
 		return {
 			number: stat.frontend_question_id,
 			title: stat.question__title,
 			slug: stat.question__title_slug,
 			difficulty: level,
+			category,
 			premium: paid_only,
 		};
 	})

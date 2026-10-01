@@ -1,0 +1,5 @@
+---
+"leetils": minor
+---
+
+Add solutions for every problem from 51 to 100: `nQueens`, `nQueensII`, `maximumSubarray`, `spiralMatrix`, `jumpGame`, `mergeIntervals`, `insertInterval`, `lengthOfLastWord`, `spiralMatrixII`, `permutationSequence`, `rotateList`, `uniquePaths`, `uniquePathsII`, `minimumPathSum`, `validNumber`, `textJustification`, `sqrtx`, `climbingStairs`, `simplifyPath`, `editDistance`, `setMatrixZeroes`, `searchA2dMatrix`, `sortColors`, `minimumWindowSubstring`, `combinations`, `subsets`, `wordSearch`, `removeDuplicatesFromSortedArrayII`, `searchInRotatedSortedArrayII`, `removeDuplicatesFromSortedListII`, `removeDuplicatesFromSortedList`, `largestRectangleInHistogram`, `maximalRectangle`, `partitionList`, `scrambleString`, `mergeSortedArray`, `grayCode`, `subsetsII`, `decodeWays`, `reverseLinkedListII`, `restoreIpAddresses`, `binaryTreeInorderTraversal`, `uniqueBinarySearchTreesII`, `uniqueBinarySearchTrees`, `interleavingString`, `validateBinarySearchTree`, `recoverBinarySearchTree` and `sameTree`.

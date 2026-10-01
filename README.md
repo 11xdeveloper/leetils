@@ -39,9 +39,12 @@ twoSum([2, 7, 11, 15], 9); // [0, 1]
 combinationSum([2, 3, 6, 7], 7); // [[2, 2, 3], [7]]
 ```
 
-Linked list and binary tree problems use the same `ListNode` and `TreeNode`
-classes LeetCode provides. The package also exports helpers to convert them
-to and from LeetCode's array format:
+Linked list, tree and graph problems use the same node classes LeetCode
+provides: `ListNode`, `TreeNode`, `GraphNode`, `RandomListNode`,
+`MultilevelListNode`, `TreeNodeWithNext`, `TreeNodeWithParent`,
+`TreeNodeWithRandom`, `NaryTreeNode`, `QuadTreeNode`, `ExpressionTreeNode`,
+`PolyNode` and `NestedInteger`. The package also exports
+helpers to convert them to and from LeetCode's array formats:
 
 ```ts
 import { addTwoNumbers, listFromArray, listToArray } from "leetils";
@@ -61,6 +64,12 @@ import.
   not defined.
 - **Inputs aren't modified** unless the problem requires it. Parameters that
   are left alone are typed `readonly`.
+- **Problems given an API**, like `isBadVersion` or `read4`, follow
+  LeetCode's JavaScript version: pass in the API and get back the solving
+  function, e.g. `firstBadVersion(isBadVersion)(n)`.
+- **Randomised solutions** take an optional last argument, a random number
+  source like `Math.random` (the default). Pass a seeded one for reproducible
+  results.
 - **Each solution's doc comment** has the problem link, difficulty, approach
   and time/space complexity, so your editor shows them on hover.
 
@@ -68,7 +77,8 @@ import.
 
 The export name is the slug in camelCase. Slugs are unique, so names never
 collide, even though LeetCode reuses function names like `isPalindrome`
-across problems.
+across problems. Design problems, where LeetCode asks for a class, export a
+class named with the slug in PascalCase.
 
 | Problem | Slug | Export |
 | --- | --- | --- |
@@ -76,6 +86,13 @@ across problems.
 | 20. Valid Parentheses | `valid-parentheses` | `validParentheses` |
 | 15. 3Sum | `3sum` | `threeSum` (leading digits are spelled out) |
 | 167. Two Sum II | `two-sum-ii-input-array-is-sorted` | `twoSumIIInputArrayIsSorted` |
+| 146. LRU Cache | `lru-cache` | `LruCache` (a class) |
+
+### Scope
+
+SQL, pandas, shell and concurrency problems aren't TypeScript problems, so
+they're out of scope. [PROBLEMS.md](PROBLEMS.md) marks them and leaves them
+out of its progress totals.
 
 ## Contributing
 
@@ -86,7 +103,8 @@ implemented yet. Pick one, then scaffold it by number:
 bun run new 125
 ```
 
-You need [Bun](https://bun.sh) and a `bun install` first. This creates
+For a design problem, add `--class` to scaffold a class instead of a
+function. You need [Bun](https://bun.sh) and a `bun install` first. This creates
 `src/problems/0125-valid-palindrome/` with a solution and test file to fill in,
 using the title, slug and difficulty from LeetCode, and updates `src/index.ts`
 and the problem list. Tests fail until the TODOs are done.
@@ -100,6 +118,10 @@ and the problem list. Tests fail until the TODOs are done.
   `@see`, `@difficulty` (matching LeetCode's), `@timeComplexity` and
   `@spaceComplexity` tags
 - has tests
+
+Code shared by several solutions, like the binary heap in `src/internal/`,
+isn't exported from the package. Test helpers, like the seeded random
+generator in `src/testing/`, are only used by tests.
 
 The problem list comes from a snapshot of LeetCode's catalogue in
 `data/leetcode-problems.json`, so builds don't depend on LeetCode being
