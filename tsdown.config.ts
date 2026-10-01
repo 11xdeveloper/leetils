@@ -5,7 +5,6 @@ const config: UserConfig = defineConfig({
 	format: "esm",
 	platform: "neutral",
 	dts: true,
-	sourcemap: true,
 	exports: true,
 });
 
