@@ -1,5 +1,5 @@
 /**
- * 2262. Total Appeal of a String
+ * 2262. Total Appeal of A String
  *
  * A string's appeal is its number of distinct characters. Returns the
  * total appeal of all substrings of `s`.

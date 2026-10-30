@@ -1,5 +1,5 @@
 /**
- * 2321. Maximum Score of Spliced Array
+ * 2321. Maximum Score Of Spliced Array
  *
  * May swap one subarray between `nums1` and `nums2` (same positions).
  * Returns the largest possible sum of either array afterwards.

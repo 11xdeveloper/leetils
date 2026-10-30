@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { maximumScoreOfSplicedArray as maximumsSplicedArray } from ".";
 
-describe("2321. Maximum Score of Spliced Array", () => {
+describe("2321. Maximum Score Of Spliced Array", () => {
 	it("solves the examples from the problem statement", () => {
 		expect(maximumsSplicedArray([60, 60, 60], [10, 90, 10])).toBe(210);
 		expect(

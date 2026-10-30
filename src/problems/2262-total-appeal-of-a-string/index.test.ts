@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { createRandom } from "../../testing/random";
 import { totalAppealOfAString as appealSum } from ".";
 
-describe("2262. Total Appeal of a String", () => {
+describe("2262. Total Appeal of A String", () => {
 	it("solves the examples from the problem statement", () => {
 		expect(appealSum("abbca")).toBe(28);
 		expect(appealSum("code")).toBe(20);
