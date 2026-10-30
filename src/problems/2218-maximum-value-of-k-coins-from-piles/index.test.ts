@@ -1,0 +1,22 @@
+import { describe, expect, it } from "bun:test";
+import { maximumValueOfKCoinsFromPiles as maxValueOfCoins } from ".";
+
+describe("2218. Maximum Value of K Coins From Piles", () => {
+	it("solves the examples from the problem statement", () => {
+		expect(
+			maxValueOfCoins(
+				[
+					[1, 100, 3],
+					[7, 8, 9],
+				],
+				2,
+			),
+		).toBe(101);
+		expect(
+			maxValueOfCoins(
+				[[100], [100], [100], [100], [100], [100], [1, 1, 1, 1, 1, 1, 700]],
+				7,
+			),
+		).toBe(706);
+	});
+});
