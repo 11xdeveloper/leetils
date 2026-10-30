@@ -43,7 +43,7 @@ Linked list, tree and graph problems use the same node classes LeetCode
 provides: `ListNode`, `TreeNode`, `GraphNode`, `RandomListNode`,
 `MultilevelListNode`, `TreeNodeWithNext`, `TreeNodeWithParent`,
 `TreeNodeWithRandom`, `NaryTreeNode`, `QuadTreeNode`, `ExpressionTreeNode`,
-`PolyNode` and `NestedInteger`. The package also exports
+`PolyNode`, `RopeTreeNode` and `NestedInteger`. The package also exports
 helpers to convert them to and from LeetCode's array formats:
 
 ```ts
