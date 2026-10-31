@@ -7,7 +7,7 @@
 <br/>
 
 <div align="center">
-  <strong>All (not really) of leetcode's problem solutions in one package</strong>
+  <strong>All of LeetCode's problem solutions in one package</strong>
   <br />
   <a href="https://www.npmjs.com/package/leetils">
     <img src="https://img.shields.io/npm/dw/leetils" alt="Downloads: /week">
@@ -97,8 +97,9 @@ out of its progress totals.
 
 ## Contributing
 
-[PROBLEMS.md](PROBLEMS.md) lists every LeetCode problem and whether it's
-implemented yet. Pick one, then scaffold it by number:
+Every problem still waiting for a solution is listed under
+[Not implemented yet](PROBLEMS.md#not-implemented-yet) in PROBLEMS.md.
+Pick one, then scaffold it by number:
 
 ```bash
 bun run new 125
@@ -141,11 +142,3 @@ reachable. Run `bun run sync` to pick up newly released problems.
 | `bun run generate` | Regenerate `src/index.ts` and the problem list |
 | `bun run sync` | Download LeetCode's latest problem list, then regenerate |
 | `bun run changeset` | Describe your change for the changelog |
-
-### Releasing
-
-Add a changeset with `bun run changeset` in any PR that changes the published
-package. On `master`, the Release workflow opens a "Version Packages" PR that
-bumps the version and updates the changelog. Merging it publishes to npm using
-[trusted publishing](https://docs.npmjs.com/trusted-publishers), so no npm
-token is stored in the repo.
