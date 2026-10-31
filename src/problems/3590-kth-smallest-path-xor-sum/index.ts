@@ -16,11 +16,11 @@
  * @spaceComplexity O(n + q)
  *
  * @example
- * kthSmallestPathXorSum([1, 1, 1], [-1, 0, 0], [[0, 1], [0, 2], [0, 3]]); // [0, 1, -1]
+ * kthSmallestPathXorSum([-1, 0, 0], [1, 1, 1], [[0, 1], [0, 2], [0, 3]]); // [0, 1, -1]
  */
 export const kthSmallestPathXorSum = (
-	vals: readonly number[],
 	par: readonly number[],
+	vals: readonly number[],
 	queries: readonly (readonly number[])[],
 ): number[] => {
 	const n = vals.length;

@@ -28,8 +28,8 @@ describe("3590. Kth Smallest Path XOR Sum", () => {
 	it("solves the examples from the problem statement", () => {
 		expect(
 			kthSmallest(
-				[1, 1, 1],
 				[-1, 0, 0],
+				[1, 1, 1],
 				[
 					[0, 1],
 					[0, 2],
@@ -39,8 +39,8 @@ describe("3590. Kth Smallest Path XOR Sum", () => {
 		).toEqual([0, 1, -1]);
 		expect(
 			kthSmallest(
-				[5, 2, 7],
 				[-1, 0, 1],
+				[5, 2, 7],
 				[
 					[0, 1],
 					[1, 2],
@@ -63,7 +63,7 @@ describe("3590. Kth Smallest Path XOR Sum", () => {
 				random.int(0, n - 1),
 				random.int(1, 5),
 			]);
-			expect(kthSmallest(vals, par, queries)).toEqual(
+			expect(kthSmallest(par, vals, queries)).toEqual(
 				byBruteForce(vals, par, queries),
 			);
 		}
