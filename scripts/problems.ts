@@ -224,6 +224,9 @@ export const renderProblemList = (): Map<string, string> => {
 		return `| ${label} | ${done} | ${list.length} | ${percent(done, list.length)} |`;
 	};
 	const outOfScope = problems.filter((problem) => !inScope(problem));
+	const notImplemented = problems.filter(
+		(problem) => inScope(problem) && !implemented.has(problem.number),
+	);
 
 	const pages = new Map<number, LeetCodeProblem[]>();
 	for (const problem of problems) {
@@ -255,6 +258,21 @@ export const renderProblemList = (): Map<string, string> => {
 				),
 			),
 			progress("**All**", problems),
+			"",
+			"## Not implemented yet",
+			"",
+			...(notImplemented.length === 0
+				? ["Every in-scope problem is implemented."]
+				: [
+						`${notImplemented.length} problems still need a solution. Scaffold one with \`bun run new <number>\`. 🔒 marks LeetCode Premium problems, whose statements need a Premium subscription to read.`,
+						"",
+						"| # | Problem | Difficulty |",
+						"| ---: | --- | --- |",
+						...notImplemented.map(
+							({ number, title, slug, difficulty, premium }) =>
+								`| ${number} | [${escapeMarkdown(title)}](${problemUrl(slug)})${premium ? " 🔒" : ""} | ${difficulty} |`,
+						),
+					]),
 			"",
 			"## Problem list",
 			"",

@@ -1,0 +1,26 @@
+import { describe, expect, it } from "bun:test";
+import { firstCompletelyPaintedRowOrColumn as firstCompleteIndex } from ".";
+
+describe("2661. First Completely Painted Row or Column", () => {
+	it("solves the examples from the problem statement", () => {
+		expect(
+			firstCompleteIndex(
+				[1, 3, 4, 2],
+				[
+					[1, 4],
+					[2, 3],
+				],
+			),
+		).toBe(2);
+		expect(
+			firstCompleteIndex(
+				[2, 8, 7, 4, 1, 3, 5, 6, 9],
+				[
+					[3, 2, 5],
+					[1, 4, 6],
+					[8, 7, 9],
+				],
+			),
+		).toBe(3);
+	});
+});
