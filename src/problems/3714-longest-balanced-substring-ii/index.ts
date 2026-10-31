@@ -25,7 +25,7 @@ export const longestBalancedSubstringII = (s: string): number => {
 		run = i > 0 && s[i] === s[i - 1] ? run + 1 : 1;
 		best = Math.max(best, run);
 	}
-	for (const [x, y, z] of [
+	for (const [x, , z] of [
 		["a", "b", "c"],
 		["a", "c", "b"],
 		["b", "c", "a"],
